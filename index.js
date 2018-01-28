@@ -24,5 +24,9 @@ function logSome (env, style) {
   }
 }
 
+logSome.toString = logSome.valueOf = function () {
+  console.log('ƒ logSome() { [native code] }')
+}
+
 exports.default = logSome
 module.exports = exports['default']
