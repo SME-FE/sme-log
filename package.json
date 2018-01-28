@@ -1,0 +1,35 @@
+{
+  "name": "sme-log",
+  "version": "0.12.1",
+  "description": "A better look for console.log",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js index.js"
+  },
+  "keywords": [
+    "cute log",
+    "light log",
+    "console.log",
+    "sme-log",
+    "sme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SME-FE/sme-log"
+  },
+  "bugs": {
+    "url": "https://github.com/SME-FE/sme-log/issues"
+  },
+  "homepage": "https://github.com/SME-FE/sme-log",
+  "author": "hwen <hwenleung@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
