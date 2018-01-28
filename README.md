@@ -13,6 +13,8 @@ npm install sme-log
 
 ## usage
 
+![hi](./docs/hi.png)
+
 ```js
 import logSome from 'sme-log';
 
