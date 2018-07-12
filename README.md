@@ -21,29 +21,37 @@ npm install sme-log
 
 ## usage
 
-![hi](./docs/hi.png)
+![1.png](./docs/1.png)
+![2.png](./docs/2.png)
 
 ```js
 import logSome from 'sme-log';
 
-// only log when NODE_ENV: 'development' or 'dev' 只在 dev 环境打印
-window.logs = logSome(process.env.NODE_ENV);
+// 只在 dev 环境打印 only log when NODE_ENV: 'development' or 'dev' 
+window.ilog = logSome(process.env.NODE_ENV);
 
-logs('hallo world');
+ilog('hallo world');
 
-// custom style 自定义样式
-window.logs = logSome(process.env.NODE_ENV, 'color: yellowgreen;');
+// prod 环境打印 warn 以上的 log
+// window.ilog = logSome(process.env.NODE_ENV, 'info') 
+window.ilog = logSome(process.env.NODE_ENV, 'warn') 
+// window.ilog = logSome(process.env.NODE_ENV, 'error') 
 
 // Always log if force equal true 当 force 为 true 时，总是会打印
 const force = true;
-logs('hallo world~~', force);
+ilog('hallo world~~', force);
+
+ilog({name: 'hwen', mes: 'halloooooooooooooooooo world'})
+ilog.info({name: 'hwen', mes: 'halloooooooooooooooooo world'})
+ilog.warn({name: 'hwen', mes: 'halloooooooooooooooooo world'})
+ilog.error({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ```
 
 **Note**: if you want to assign window, you have better change your eslint config
 
 ```js
 globals: {
-  'logs': false
+  'ilog': false
 }
 ```
 
