@@ -32,7 +32,7 @@ function logSome (env, level = 'none') {
   const logger = (info, force, opts = {}) => {
     const t = type(info)
     if (force || env === 'development' || env === 'dev') {
-      if (t !== 'Object' && t !== 'Function') {
+      if (typeof info !== 'object' && typeof info !== 'function') {
         console.log('%c' + info, getStyle(opts.color))
       } else {
         console.log('%c%s%o', getStyle(opts.color), `${opts.level || 'log'} `, info)
