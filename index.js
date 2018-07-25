@@ -6,7 +6,7 @@
  */
 function logSome (env, level = 'none') {
   env = env || 'dev'
-  let levelNum = 0
+  let levelNum = 1
   const theme = {
     normal: '#92e6e6',
     error: '#ff5335',
@@ -15,22 +15,20 @@ function logSome (env, level = 'none') {
   }
   switch (level) {
     case 'error':
-      levelNum = 3
+      levelNum = 1
       break
     case 'warn':
       levelNum = 2
       break
     case 'info':
-      levelNum = 1
+      levelNum = 3
       break
     default:
-      levelNum = 0
+      levelNum = 1
       break
   }
   const getStyle = color => `color:${color || '#8b80f9'};font-weight:bold;`
-  const type = t => Object.prototype.toString.call(t).slice(8, -1)
   const logger = (info, force, opts = {}) => {
-    const t = type(info)
     if (force || env === 'development' || env === 'dev') {
       if (typeof info !== 'object' && typeof info !== 'function') {
         console.log('%c' + info, getStyle(opts.color))
@@ -40,13 +38,13 @@ function logSome (env, level = 'none') {
     }
   }
   logger.info = (info, force) => {
-    logger(info, force || levelNum > 0, { color: theme.info, level: 'info' })
+    logger(info, force || levelNum >= 3, { color: theme.info, level: 'info' })
   }
   logger.warn = (info, force) => {
-    logger(info, force || levelNum > 1, { color: theme.warn, level: 'warn' })
+    logger(info, force || levelNum >= 2, { color: theme.warn, level: 'warn' })
   }
   logger.error = (info, force) => {
-    logger(info, force || levelNum > 2, { color: theme.error, level: 'error' })
+    logger(info, force || levelNum >= 1, { color: theme.error, level: 'error' })
   }
   return logger
 }
