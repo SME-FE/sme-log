@@ -20,8 +20,11 @@ function logSome (env = 'dev', level = 'none') {
       case 'warn':
         levelNum = 2
         break
-      default: // info & other
+      case 'info':
         levelNum = 3
+        break
+      default:
+        levelNum = (env === 'development' || env === 'dev') ? 3 : 1
         break
     }
   }
@@ -36,11 +39,11 @@ function logSome (env = 'dev', level = 'none') {
   const logger = (info, force, opts = {}) => {
     if (isLogEnable(opts, force, env)) {
       if (opts.level && info instanceof Array && info.length === 2) {
-        console.log('%c%s%o', getStyle(opts.color), `${info[0]}: `, info[1])
+        console.log('%c%s%o', getStyle(opts.color), `${info[0]} `, info[1])
       } else if (typeof info !== 'object' && typeof info !== 'function') {
         console.log('%c' + info, getStyle(opts.color))
       } else {
-        console.log('%c%s%o', getStyle(opts.color), `${opts.level || 'log'}: `, info)
+        console.log('%c%s%o', getStyle(opts.color), `${opts.level || 'log'} `, info)
       }
     }
   }

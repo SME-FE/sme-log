@@ -24,27 +24,51 @@ npm install sme-log
 ![1.png](./docs/1.png)
 ![2.png](./docs/2.png)
 
+- Base
+
 ```js
-import logSome from 'sme-log';
+import logSome from 'sme-log'
 
 // 只在 dev 环境打印 only log when NODE_ENV: 'development' or 'dev' 
-window.ilog = logSome(process.env.NODE_ENV);
+window.ilog = logSome(process.env.NODE_ENV)
 
-ilog('hallo world');
-
-// prod 环境打印 warn 以上的 log
-// window.ilog = logSome(process.env.NODE_ENV, 'info') 
-window.ilog = logSome(process.env.NODE_ENV, 'warn') 
-// window.ilog = logSome(process.env.NODE_ENV, 'error') 
+ilog('hallo world')
 
 // Always log if force equal true 当 force 为 true 时，总是会打印
-const force = true;
-ilog('hallo world~~', force);
+const force = true
+ilog('hallo world~~', force)
+// or
+ilog('hallo world~~', 'force')
 
 ilog({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ilog.info({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ilog.warn({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ilog.error({name: 'hwen', mes: 'halloooooooooooooooooo world'})
+```
+
+- set level
+
+level: 'info' || 'warn' || 'error'
+
+```js
+// window.ilog = logSome(process.env.NODE_ENV, 'info')
+window.ilog = logSome(process.env.NODE_ENV, 'warn')
+// window.ilog = logSome(process.env.NODE_ENV, 'error') 
+
+// or 
+ilog.setLevel('error')
+```
+
+- log name
+
+only work for `ilog.info`, `ilog.warn`, `ilog.error`
+
+```js
+const listErr = new Error('request list 403')
+ilog.error('request get list error', listErr)
+
+const params = {}
+ilog.info('request params', params)
 ```
 
 **Note**: if you want to assign window, you have better change your eslint config
