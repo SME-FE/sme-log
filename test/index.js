@@ -1,0 +1,33 @@
+var logSome = require('./../index')
+var ilog = logSome('dev')
+
+ilog('hallo world')
+ilog.info('hallo world')
+ilog.warn('hallo world')
+ilog.error('hallo world')
+
+ilog = logSome('prod')
+ilog('===== prod ====', 'force')
+ilog.setLevel('warn')
+ilog('hallo world')
+ilog.info('hallo world')
+ilog.warn('hallo world')
+ilog.error('hallo world')
+
+ilog = logSome('dev')
+ilog('===== dev ====', 'force')
+ilog.setLevel('warn')
+ilog('hallo world')
+ilog.info('hallo world')
+ilog.warn('hallo world')
+ilog.error('hallo world')
+
+ilog.setLevel('info')
+var obj = { name: 'hwencc', mes: { height: '100', width: '100' } }
+ilog('ilog obj', obj)
+ilog.info('info obj', obj)
+ilog.warn('warn obj', obj)
+ilog.error('error obj', obj)
+ilog.error('error obj', 'how about this...')
+ilog.error('arr', [1, 3, 4, obj])
+ilog.info(obj)
