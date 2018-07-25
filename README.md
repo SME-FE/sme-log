@@ -1,7 +1,7 @@
 
 ## sme-log
 
-A lovely logs
+A lovely logger
 
 ![download](https://img.shields.io/npm/dm/sme-log.svg?style=flat-square)
 ![version](https://img.shields.io/npm/v/sme-log.svg?style=flat-square)
@@ -46,7 +46,7 @@ ilog.warn({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ilog.error({name: 'hwen', mes: 'halloooooooooooooooooo world'})
 ```
 
-- set level
+- Set log level
 
 level: 'info' || 'warn' || 'error'
 
@@ -59,7 +59,7 @@ window.ilog = logSome(process.env.NODE_ENV, 'warn')
 ilog.setLevel('error')
 ```
 
-- log name
+- Add name to log mes  
 
 only work for `ilog.info`, `ilog.warn`, `ilog.error`
 
