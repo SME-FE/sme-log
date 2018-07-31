@@ -4,7 +4,7 @@
  * and only log on dev mode
  * always log if force is true
  */
-function logSome (env = 'dev', level = 'none') {
+function logSome(env = 'dev', level = 'none') {
   let levelNum = 3
   const theme = {
     normal: '#92e6e6',
@@ -60,13 +60,16 @@ function logSome (env = 'dev', level = 'none') {
     logger(info, levelNum >= 1, { color: theme.error, level: 'error' })
   }
   logger.setLevel = setLevel
+  logger.toString = logger.valueOf = fstr('logger')
 
   setLevel(level)
   return logger
 }
 
-logSome.toString = logSome.valueOf = function () {
-  console.log('ƒ logSome() { [native code] }')
+logSome.toString = logSome.valueOf = fstr('logSome')
+
+function fstr(type) {
+  return () => `${type}() { [native code] }`
 }
 
 exports.default = logSome
